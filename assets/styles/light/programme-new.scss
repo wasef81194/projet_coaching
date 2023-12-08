@@ -1,0 +1,29 @@
+.light{
+    .card-new-programme{
+        padding: 20px;
+        .btn{
+            width: 100%;
+        }
+        .container-img-programme{
+            max-width: 500px;
+            height: 220px; 
+            text-align: center;
+            margin: auto;
+            img{
+                width: 100%;
+                height: 100%;
+                border-radius: 15px;
+                object-fit: cover;
+            }
+            .video-react{
+                padding-top: 40% !important;
+                max-width: 500px;
+                background: none;
+                video{
+                    object-fit: cover;
+                    border-radius: 15px;
+                }
+            }
+        }
+    }
+}

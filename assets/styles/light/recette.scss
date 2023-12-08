@@ -1,0 +1,106 @@
+.light{
+    .container-recette{
+        padding-bottom: 50px;
+        .bandeau{
+            min-height: 550px;
+            position: relative;
+            z-index: 2;
+            h1{
+                padding: 60px 0 0 50px;
+                max-width: 823px;
+                z-index: 2;
+                position: relative;
+            }
+            .avis{
+                width: fit-content;
+                padding: 10px 0 0 50px;
+                color: #fff;
+                z-index: 2;
+                position: relative;
+                i{
+                    color: yellow;
+                }
+            }
+            .container-recette{
+                background-color: #fff;
+            }
+            .flex{
+                display: flex;
+                flex-flow: initial;
+                position: relative;
+                justify-content: space-between;
+                padding: 0 50px 0 50px;
+                align-items: end;
+                .coach{
+                    img{
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 50px;
+                    }
+                    a{
+                        position: absolute;
+                        right: 10px;
+                        top: 10px;
+                    }
+                }
+                img{
+                    width: 463px;
+                    height: 473px;
+                    object-fit: cover;
+                    border-radius: 5px;
+                    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+                }
+
+                .container-ingredients{
+                    position: relative;
+                    background: #fff;
+                    padding: 15px;
+                    max-width: 410px;
+                    width: 100%;
+                    height: fit-content;
+                    min-height: 260px;
+                    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+                    border-radius: 5px;
+                    
+                    li{
+                        word-break: break-all;
+                    }
+                }
+
+            }
+            
+            
+        }
+        .bandeau::before {
+            z-index: 0;
+            background-color: $pink;
+            content: "";
+            width: 100%;
+            height: 90%;
+            position: absolute;
+        }
+        .container{
+            padding-bottom : 20px;
+            .container-description{
+                .duree{
+                    margin-right: 20px;
+                    width: fit-content;
+                    text-align: center;
+                    i{
+                        color: $pink;
+                    }
+                }
+                .h3{
+                    color: $red;
+                }
+                a{
+                    width: 100%;
+                }
+            }
+        }
+        .container-programmes{
+            display: flex;
+            flex-wrap: wrap;
+        }
+    }
+}

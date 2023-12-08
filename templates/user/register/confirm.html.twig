@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="container">
+    <h1>My Online Coach</h1>
+    {% if user %}
+        <div class="alert alert-success" role="alert">
+            <p>Bonjour {{user.firstname}} {{user.lastname}},</p>
+            <p>Nous vous remercions d’avoir complété votre inscription auprès de MOC.</p>
+            <p>Nous confirmons que votre compte est activé et que vous faites officiellement partie de la famille de MOC.</p>
+            <p>Vous pouvez désormais vous connecté <a href="{{link}}">ici.</a></p>
+        </div>
+    {% else %}
+        <div class="alert alert-danger"> 
+            Ce lien à expiré !
+        </div>
+    {% endif %}
+    
+</div>
+{% endblock %}

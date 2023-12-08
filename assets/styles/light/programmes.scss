@@ -1,0 +1,42 @@
+.video-react-button.video-react-big-play-button.video-react-big-play-button-left {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);   
+    background: $pink;
+}
+.card-programme-coach{
+    max-width: 304px  !important;
+    width: 100%;
+    margin: 10px; 
+    .video-react.video-react-fluid{
+        padding-top: 100% !important;
+    }
+    .video-react .video-react-video{
+        object-fit: cover;
+    }
+    .card-img-top {
+        height: 348px;
+        object-fit: cover;
+      }
+    p{
+        display: -webkit-box;
+        max-width: 100%;
+        max-height: 75px;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+.container-programmes{
+    display:flex;
+    flex-wrap: wrap;
+}
+.container-all-programmes{
+    display: flex;
+    flex-flow: wrap;
+    .card-programme-coach{
+        max-width: 350px !important;
+    }
+}

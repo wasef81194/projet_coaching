@@ -1,0 +1,40 @@
+.dark{
+    .card-register{
+        width: 600px;
+        padding: 50px;
+        margin: auto;
+        margin-top: 100px;
+        background-color: $grey-dark;
+        .form-control{
+            margin-top: 15px;
+            background-color: $grey-dark;
+            color: white;
+            border: 0px solid;
+            height: 50px;
+        }
+        input:focus
+        {
+            border-color: none;
+            box-shadow: none;
+        }
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.404);
+        }
+        .title-register{
+            color: white;
+        }
+        .btn-send{
+            margin-top: 25px;
+            background-color: #E8372F;
+            float: right;
+        }
+        .btn-send:hover{
+            background-color: #f71408;
+        }
+        .btn-connexion{
+            text-align: center;
+            margin-top: 25px;
+            color: white;
+        }
+    }
+}

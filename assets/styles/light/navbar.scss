@@ -1,0 +1,10 @@
+.light{
+    .navbar-brand{
+        color: $red;
+    }
+    .navbar{
+        .nav-link:hover{
+            color: $red;
+        }
+    }
+}

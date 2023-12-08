@@ -1,0 +1,23 @@
+.light{
+    .container-new-recette{
+        .card{
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+            padding: 20px;
+            .btn{
+                width: 100%;
+            }
+            .container-img-recette{
+                max-width: 500px;
+                height: 220px;
+                text-align: center;
+                margin: auto;
+                img{
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 15px;
+                    object-fit: cover;
+                }
+            }
+        }
+    }
+}

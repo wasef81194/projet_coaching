@@ -1,0 +1,31 @@
+.light{
+    .card-recette-coach{
+        max-width: 304px !important;
+        margin: 10px;
+        .card-img-top {
+            height: 348px;
+            object-fit: cover;
+          }
+        p{
+            display: -webkit-box;
+            max-width: 100%;
+            max-height: 75px;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+    .container-recettes{
+        display:flex;
+        flex-wrap: wrap;
+        
+    }
+    .container-all-recettes{
+        display: flex;
+        flex-flow: wrap;
+        .card-recette-coach{
+            max-width: 350px !important;
+        }
+    }
+}

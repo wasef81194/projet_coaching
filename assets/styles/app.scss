@@ -1,0 +1,66 @@
+@import "~video-react/styles/scss/video-react";
+@import "~bootstrap/scss/bootstrap";
+@import 'root.scss';
+@import './dark/register.scss';
+@import './dark/home.scss';
+//@import './dark/loader.scss';
+@import './dark/navbar.scss';
+@import './dark/base.scss';
+@import './light/navbar.scss';
+@import './light/base.scss';
+@import './light/home.scss';
+@import './light/loader.scss';
+
+@import './light/coach.scss';
+@import './light/coachs.scss';
+
+@import './light/profil.scss';
+@import './light/profil-edit.scss';
+
+@import './light/recette-new.scss';
+@import './light/recettes.scss';
+@import './light/recette.scss';
+
+@import './light/programmes.scss';
+@import './light/programme.scss';
+@import './light/programme-new.scss';
+
+@import './light/reservation-new.scss';
+
+@import url('https://fonts.cdnfonts.com/css/clean-sports-stencil');
+@import 'animate.css';
+.accordion {
+    --bs-accordion-active-bg: #eb616121;
+    --bs-accordion-active-color: #C73120;
+}
+.accordion-button:focus {
+    box-shadow: none;
+  }
+html {
+    height: 100%;
+}
+body, #app {
+    height: 100%;
+}
+.dark{
+    background-color : $dark-bg;
+}
+#app .light{
+    background-color : $light-bg;
+    min-height: 100%;
+}
+.min-opacity{
+    opacity: 0.30;
+}
+.p-20{
+    padding: 0 20em 0 20em;
+}
+.hidden{
+    visibility: collapse;
+}
+.mr-5{
+    margin-right: 5px;
+}
+.mr-1{
+    margin-right: 2px;
+}
