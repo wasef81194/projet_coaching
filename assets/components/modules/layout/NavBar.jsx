@@ -55,6 +55,7 @@ const NavBar = (props)=>{
                   <li><a className="dropdown-item" href="#/my/recettes">Mes recettes</a></li>
                   <li><a className="dropdown-item" href="#/my/programmes">Mes programmes</a></li>
                   <li><a className="dropdown-item" href="#/reservations">Réservations</a></li>
+                  <li><a className="dropdown-item" href="#/rdv">Mes rendez-vous</a></li>
                 </ul>
               </li>
           }

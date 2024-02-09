@@ -24,6 +24,7 @@ import ProgrammesPage from './components/ProgrammesPage';
 import Logout from './components/Logout';
 import ReservationNewPage from './components/ReservationNewPage';
 import ReservationsPage from './components/ReservationsPage';
+import RdvPage from './components/RdvPage';
 
 const $ = require('jquery');
 require('bootstrap');
@@ -67,6 +68,7 @@ const App = () =>{
 
                     <Route path="/reservation/:id" component={ReservationNewPage}/>
                     <Route path="/reservations" component={ReservationsPage}/>
+                    <Route path="/rdv" component={RdvPage}/>
                     
                     <Route path="/logout" component={Logout}/>
                </HashRouter>
