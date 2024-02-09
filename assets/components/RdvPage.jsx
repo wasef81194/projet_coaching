@@ -8,7 +8,6 @@ const RdvPage = (props)=>{
         <div>
             <Auth></Auth>
             <NavBar name="navbar-home"></NavBar>
-            TEST
             <Rdvs></Rdvs>
         </div>
     )
