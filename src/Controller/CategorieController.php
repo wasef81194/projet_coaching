@@ -21,7 +21,7 @@ class CategorieController extends AbstractController
         return new JsonResponse($response, 200, [], true);
     }
 
-    #[Route('api/categories/programme', name: 'app_categories_recette')]
+    #[Route('api/categories/programme', name: 'app_categories_programme')]
     public function programmeCategories(CategorieRepository $categorieRepository, SerializerInterface $serializer): JsonResponse
     {
         $categories = $categorieRepository->findBy(['deleted_at' => NULL, 'isProgramme' => 1]);
