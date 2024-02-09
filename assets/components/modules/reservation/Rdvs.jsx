@@ -25,6 +25,7 @@ const Rdvs = (params) => {
             ))
             Promise.all(rdvs).then(() => {
                 setRdvs(json);
+                
                 setReady(1);
             });
             
@@ -46,24 +47,51 @@ const Rdvs = (params) => {
         <Loader></Loader>
     ) : (
     <div className="container container-reservations">
-        <h1>Réservations de séance</h1>
-        {rdvs != '' &&
-                rdvs.map((rdv, key) => (  
-                    <div key={key} className="card mt-2">
-                        <div className="card-body">
-                        <p>{rdv.coach.firstname} {rdv.coach.lastname}</p> 
-                        {rdv.confirm && 
-                            <span class="badge text-bg-success mb-2">Confirmé</span>
-                        }
-                        {rdv.confirm == false && 
-                            <span class="badge text-bg-danger mb-2">Annuler</span>
-                        }
-                        <p>Le : {dayjs(rdv.commence).format('DD/MM/YYYY') } de {dayjs(rdv.commence).format('hh:mm') } à {dayjs(rdv.fin).format('hh:mm') }</p>
-                        <a href="#" className="btn  btn-sm btn-secondary mr-1"> <i className="bi bi-person-fill"></i> Voir profil </a>
+        <div className='d-flex gap-3'>
+            <div className='w-100'>
+            <h1>Réservations de séance</h1>
+           
+            {rdvs != '' &&
+                    rdvs.map((rdv, key) => (  
+                        new Date().getTime() <= new Date(rdv.commence).getTime() &&
+                        <div key={key} className="card mt-2">
+                            <div className="card-body">
+                            <p>{rdv.coach.firstname} {rdv.coach.lastname}</p> 
+                            {rdv.confirm && 
+                                <span className="badge text-bg-success mb-2">Confirmé</span>
+                            }
+                            {rdv.confirm == false && 
+                                <span className="badge text-bg-danger mb-2">Annuler</span>
+                            }
+                            <p>Le : {dayjs(rdv.commence).format('DD/MM/YYYY') } de {dayjs(rdv.commence).format('hh:mm') } à {dayjs(rdv.fin).format('hh:mm') }</p>
+                            <a href="#" className="btn  btn-sm btn-secondary mr-1"> <i className="bi bi-person-fill"></i> Voir profil </a>
+                            </div>
                         </div>
-                    </div>
-                ))
-            }
+                    ))
+                }
+            </div>
+            <div className='w-100'>
+            <h1>Réservations passé</h1>
+            {rdvs != '' &&
+                    rdvs.map((rdv, key) => (  
+                        new Date().getTime() > new Date(rdv.commence).getTime() &&
+                        <div key={key} className="card mt-2">
+                            <div className="card-body">
+                            <p>{rdv.coach.firstname} {rdv.coach.lastname}</p> 
+                            {rdv.confirm && 
+                                <span className="badge text-bg-success mb-2">Confirmé</span>
+                            }
+                            {rdv.confirm == false && 
+                                <span className="badge text-bg-danger mb-2">Annuler</span>
+                            }
+                            <p>Le : {dayjs(rdv.commence).format('DD/MM/YYYY') } de {dayjs(rdv.commence).format('hh:mm') } à {dayjs(rdv.fin).format('hh:mm') }</p>
+                            <a href={`#/coach/${rdv.coach.id}`} className="btn  btn-sm btn-secondary mr-1"> <i className="bi bi-person-fill"></i> Voir profil </a>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
     </div>
     );
 }

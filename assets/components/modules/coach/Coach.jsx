@@ -145,6 +145,10 @@ export default function Coach(params){
                     </div>
                 </div>
             }
+            <div className="container container-avis  mt-5 ">
+                <h2>Avis</h2>
+                <a href={`#/new/avis/coach/${id}`} className="btn btn-warning mb-5"> <i class="bi bi-star-half"></i> Laisser un avis</a>
+            </div>
         </div>
    )
 }
