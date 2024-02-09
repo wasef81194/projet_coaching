@@ -9,9 +9,6 @@ const ProgrammeNewPage = (props)=>{
             <Auth></Auth>
             <AuthCoach></AuthCoach>
             <NavBar name="navbar-home"></NavBar>
-            <div className="container-fluid">
-                <h1>Nouveau programme</h1>
-            </div>
             <ProgrammeNew></ProgrammeNew>
         </div>
     )
