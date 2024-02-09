@@ -42,8 +42,8 @@ export default function Recettes(params) {
         <div className="container-fluid recettes">
             <div className="container-all-recettes mt-4">
                 {recettes != '' &&
-                    recettes.map(recette => (  
-                        <ShowRecette recette={recette}></ShowRecette>
+                    recettes.map((recette, key) => (  
+                        <ShowRecette recette={recette} key={key}></ShowRecette>
                     ))
                 }
             </div>

@@ -44,7 +44,7 @@ export default function Programmes(params) {
         <div className="container-fluid programmes">
             <div className="container-all-programmes mt-4">
                 {programmes != '' &&
-                    programmes.map(programme => (  
+                    programmes.map((programme, key) => (  
                         <ShowProgramme programme={programme}></ShowProgramme>
                     ))
                 }

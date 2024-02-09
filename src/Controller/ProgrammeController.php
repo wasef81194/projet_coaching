@@ -115,7 +115,7 @@ class ProgrammeController extends AbstractController
         $programme->setName($name);
         //Description
         $programme->setDescription($data['description']);
-        $programme->setCreer(new \DateTime('now'));
+        $programme->setCreatedAt(new \DateTime('now'));
         $entityManager->persist($programme);
         $entityManager->flush();
 

@@ -10,6 +10,10 @@ const ProgrammesProfilPage = (props)=>{
             <Auth></Auth>
             <AuthCoach></AuthCoach>
             <NavBar name="navbar-home"></NavBar>
+            <div className="container-fluid">
+                <h1>Vos Programmes</h1>
+                <a href="#/new/programme" className="btn btn-primary"><i className="bi bi-plus-lg"></i> Nouveau Programme</a>
+            </div>
             <Programmes myProgramme="1"></Programmes>
         </div>
     )
