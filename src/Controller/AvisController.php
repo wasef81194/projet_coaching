@@ -19,14 +19,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 #[Route('api/avis')]
 class AvisController extends AbstractController
 {
-    #[Route('/', name: 'app_avis_index', methods: ['GET'])]
-    public function index(AvisRepository $avisRepository): Response
-    {
-        return $this->render('avis/index.html.twig', [
-            'avis' => $avisRepository->findAll(),
-        ]);
-    }
-
+   
     #[Route('/coach/{idCoach}', name: 'app_avis_index', methods: ['GET'])]
     public function avisCoach($idCoach, UserRepository $userRepository, AvisRepository $avisRepository, SerializerInterface $serializer): JsonResponse
     {
@@ -35,6 +28,26 @@ class AvisController extends AbstractController
         $response = $serializer->serialize(
             $avis, 'json', [ AbstractNormalizer::CIRCULAR_REFERENCE_HANDLER => function ($object) { return null; }]
         );
+        return new JsonResponse($response, 200, [], true);
+    }
+
+    #[Route('/moyenne/coach/{idCoach}', name: 'app_avis_moyenne', methods: ['GET'])]
+    public function noteMoyenneCoach($idCoach, UserRepository $userRepository, AvisRepository $avisRepository, SerializerInterface $serializer): JsonResponse
+    {
+        $coach = $userRepository->findOneCoach($idCoach);
+        $avis = $avisRepository->findBy(['deleted_at' => NULL, 'coach' => $coach]);
+
+        $moyenne = 0;
+        foreach ($avis as $avi) {
+            $moyenne += $avi->getNote(); 
+        }
+        $diviser = count($avis);
+        $moyenne = $moyenne/$diviser;
+
+        $response = $serializer->serialize(
+            $moyenne, 'json'
+        );
+
         return new JsonResponse($response, 200, [], true);
     }
     

@@ -16,6 +16,7 @@ export default function Coach(params){
     const [recettes, setRecettes] = React.useState('');
     const [programmes, setProgrammes] = React.useState('');
     const [avis, setAvis]= React.useState('');
+    const [noteMoyenne, setNoteMoyenne]= React.useState('');
     const {id} = useParams(); //Pour un objet
 
     useEffect(() => {
@@ -75,6 +76,14 @@ export default function Coach(params){
                     })
                 })
 
+                fetch(API_URL+'avis/moyenne/coach/'+coach.id)
+                .then((json) => json.json())
+                .then((noteMoyenne) => {
+                    setNoteMoyenne(noteMoyenne);
+                    num += 1;
+                    setReady(num);
+                })
+
                 fetch(API_URL+'avis/coach/'+coach.id)
                 .then((json) => json.json())
                 .then((avis) => {
@@ -92,16 +101,23 @@ export default function Coach(params){
     }, [])
 
     console.log(coach);
-    return ready != 5 ? (
+    return ready != 6 ? (
         <Loader></Loader>
    ) : (
         <div className="container-coach">
            <div className="bandeau">
                 <h1>{coach.firstname} {coach.lastname}</h1>
-                <div className="avis"> 
-                    {avis.map(avi => (
-                        <i key={avi} className="bi bi-star-fill"> </i>  
-                    ))}
+                <div className="avis-note"> 
+                {
+                    // Utilisation d'une boucle for pour afficher les étoiles
+                    (() => {
+                        const stars = [];
+                        for (let i = 0; i < noteMoyenne; i++) {
+                            stars.push(<i key={i} className="bi bi-star-fill"> </i>);
+                        }
+                        return stars;
+                    })()
+                }
                 </div>
                 <div className="container-media">
                     <img className="image-cover" src={coach.cover}/>
@@ -154,18 +170,29 @@ export default function Coach(params){
                 </div>
             }
             
-            <div className="container avis  mt-5 ">
+            <div className="container avis  mt-5  mb-4">
                 <h2>Avis</h2>
                 <a href={`#/new/avis/coach/${id}`} className="btn btn-warning mb-5"> <i className="bi bi-star-half"></i> Laisser un avis</a>
                 {avis != '' &&
-                    <div className="container-avis mb-4">
-                        {recettes != '' &&
+                    <div className="container-avis">
+                        {avis != '' &&
                             avis.map(avi => (  
-                                <div key={avi.id}  class="avis">
-                                    <div class="avis-user">{avi.user.firstname} {avi.user.lastname}</div>
-                                    <div class="avis-date">{avi.createdAt}</div>
-                                    <div class="avis-note">{avi.note}</div>
-                                    <div class="avis-commentaire">{avi.commentaire}</div>
+                                <div key={avi.id}  className="avis-card mt-2">
+                                    <div className="avis-user">{avi.user.firstname} {avi.user.lastname}</div>
+                                    <div className="avis-date">{new Date(avi.createdAt).toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' })}</div>
+                                    <div className="avis-note"> 
+                                       {
+                                        // Utilisation de la note de l'avis pour afficher les étoiles
+                                        (() => {
+                                            const stars = [];
+                                            // Boucle pour afficher le nombre d'étoiles correspondant à la note
+                                            for (let i = 0; i < avi.note; i++) {
+                                                stars.push(<i key={i} className="bi bi-star-fill"> </i>);
+                                            }
+                                            return stars;
+                                        })()
+                                    }</div>
+                                    <div className="avis-commentaire">{avi.commentaire}</div>
                                 </div>
                             ))
                         }
