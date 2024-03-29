@@ -3,11 +3,14 @@ import { API_URL } from '../../../config';
 import Loader from '../layout/Loader';
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 
-const AvisNew = (params) => {
+const AvisCoachNew = (params) => {
     const {id} = useParams(); //Pour un objet
     const [ready, setReady] = React.useState(0);
    
     const [contentBtn, setContentBtn] = React.useState(<span><i className="bi bi-star-half"></i> Déposer mon avis </span>);
+    const [coach, setCoach] = React.useState('');
+    const [note, setNote] = React.useState('');
+    const [commentaire, setCommentaire] = React.useState('');
     const [disabledBtn, setDisabledBtn] = React.useState(false);
     const [message, setMessage] = React.useState({
         bgColor : '',
@@ -16,26 +19,24 @@ const AvisNew = (params) => {
     });
 
     useEffect(() => {
-        console.log(id, params);
-        setReady(1);
-    }, []);
-
-    async function getCoach(id){
-        const user = await fetch(API_URL+'coach/'+id)
+        fetch(API_URL+'coach/'+id)
         // Transforme les données en json
         .then((res) => res.json())
         .then((json) => {
-            return json; 
+            setCoach(json);
+            setReady(1);
         });
-        return user;
-    }
+
+    }, []);
+
+    
 
     const handleSubmit = (event) => {
         event.preventDefault();
         //Chargement du btn 
         setContentBtn(<span> <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Chargement... </span>);
-        setDisabledBtn(true);
-
+       setDisabledBtn(true);
+        console.log('START');
         const requestOptions = {
             method: "POST", 
             headers: {
@@ -44,11 +45,12 @@ const AvisNew = (params) => {
             body: JSON.stringify({
                 idUser: localStorage.getItem("id"),
                 idCoach : id,
-                date : date
+                note : note,
+                commentaire : commentaire
             }),
-          };
+        };
 
-        fetch(API_URL+'new/reservation', requestOptions)
+        fetch(API_URL+'avis/coach/new', requestOptions)
             .then(data => data.json())
             .then((data) => {
                 
@@ -71,34 +73,29 @@ const AvisNew = (params) => {
                         class : ''
                     }); 
                 }
-                setContentBtn(<span><i className="bi bi-check-lg"></i> Ajouter cette recette</span>);
+                setContentBtn(<span><i className="bi bi-star-half"></i> Déposer mon avis </span>);
                 setDisabledBtn(false);
             }
         )
     }
 
-    /*const handleChangeDate = (e) => {
-        var value = e.target.value;
-        setDate(value);
-        
-    };*/
-
+    
     return ready != 1 ? (
         <Loader></Loader>
     ) : (
     <div className="container container-reservation">
         <a href={`#/coach/${id}`} className="btn btn-secondary btn-sm mt-1 mb-4"> <i className="bi bi-arrow-left "></i> Retour </a>
-        <div className={`alert ${message.bgColor} ${message.class}`} role="alert">
-            {message.text}
-        </div>
         <div className="card card-new-recette mt-3 mb-3">
-            <h1>Laisser un avis à </h1>
+            <h1>Laisser un avis à {coach.firstname}  {coach.lastname}</h1>
+            <div className={`alert ${message.bgColor} ${message.class}`} role="alert">
+                {message.text}
+            </div>
             <form onSubmit={handleSubmit}>
                 <label className="form-label" htmlFor='note-coach'>Note *</label>
-                <input type="number" min="0" max="5" name="note" className="form-control" id="note-coach"/>
+                <input type="number" value={note}  onChange={e => setNote(e.target.value)} min="0" max="5" name="note" className="form-control" id="note-coach"/>
 
                 <label className="form-label" htmlFor='commentaire'>Commentaire</label>
-                <textarea  className="form-control" id="commentaire" name="commentaire"></textarea>
+                <textarea value={commentaire}  onChange={e => setCommentaire(e.target.value)} className="form-control" id="commentaire" name="commentaire"></textarea>
             
                 <button type="submit" value="Envoyer" disabled={disabledBtn} className="btn btn-success mt-3 mb-3">{contentBtn}</button>
             </form>
@@ -106,4 +103,4 @@ const AvisNew = (params) => {
     </div>
     );
 }
-export default AvisNew;
+export default AvisCoachNew;

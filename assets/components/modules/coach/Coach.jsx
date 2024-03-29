@@ -15,7 +15,7 @@ export default function Coach(params){
     const [ready, setReady] = React.useState(0);
     const [recettes, setRecettes] = React.useState('');
     const [programmes, setProgrammes] = React.useState('');
-    const [avis, setAvis]= React.useState([1,2,3,4,5]);
+    const [avis, setAvis]= React.useState('');
     const {id} = useParams(); //Pour un objet
 
     useEffect(() => {
@@ -74,6 +74,14 @@ export default function Coach(params){
                         setReady(num);
                     })
                 })
+
+                fetch(API_URL+'avis/coach/'+coach.id)
+                .then((json) => json.json())
+                .then((avis) => {
+                    setAvis(avis);
+                    num += 1;
+                    setReady(num);
+                })
                 
 
             })
@@ -84,7 +92,7 @@ export default function Coach(params){
     }, [])
 
     console.log(coach);
-    return ready != 4 ? (
+    return ready != 5 ? (
         <Loader></Loader>
    ) : (
         <div className="container-coach">
@@ -145,9 +153,24 @@ export default function Coach(params){
                     </div>
                 </div>
             }
-            <div className="container container-avis  mt-5 ">
+            
+            <div className="container avis  mt-5 ">
                 <h2>Avis</h2>
-                <a href={`#/new/avis/coach/${id}`} className="btn btn-warning mb-5"> <i class="bi bi-star-half"></i> Laisser un avis</a>
+                <a href={`#/new/avis/coach/${id}`} className="btn btn-warning mb-5"> <i className="bi bi-star-half"></i> Laisser un avis</a>
+                {avis != '' &&
+                    <div className="container-avis mb-4">
+                        {recettes != '' &&
+                            avis.map(avi => (  
+                                <div key={avi.id}  class="avis">
+                                    <div class="avis-user">{avi.user.firstname} {avi.user.lastname}</div>
+                                    <div class="avis-date">{avi.createdAt}</div>
+                                    <div class="avis-note">{avi.note}</div>
+                                    <div class="avis-commentaire">{avi.commentaire}</div>
+                                </div>
+                            ))
+                        }
+                    </div>
+                }
             </div>
         </div>
    )

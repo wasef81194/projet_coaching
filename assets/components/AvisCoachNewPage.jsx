@@ -1,15 +1,15 @@
 import React from 'react';
 import NavBar from './modules/layout/NavBar';
 import Auth from './modules/Auth';
-import AvisNew from './modules/avis/AvisNew';
+import AvisCoachNew from './modules/avis/AvisCoachNew';
 
-const AvisNewPage = (props)=>{ 
+const AvisCoachNewPage = (props)=>{ 
     return (
         <div>
             <Auth></Auth>
             <NavBar name="navbar-home"></NavBar>
-            <AvisNew></AvisNew>
+            <AvisCoachNew></AvisCoachNew>
         </div>
     )
 }
-export default AvisNewPage;
+export default AvisCoachNewPage;
