@@ -64,3 +64,26 @@ body, #app {
 .mr-1{
     margin-right: 2px;
 }
+
+h1, h2, h3, p{
+    color: $secondary-color;
+}
+
+a {
+    color: $primary-color;
+}
+a:hover{
+    color: $hover-color;
+}
+
+.custom-primary-btn{
+    background-color: $primary-color;
+    color: $light;
+}
+.custom-primary-btn:hover{
+    background-color: #FA3D28;
+    color: $light;
+}
+.login-page{
+    height: 100vh;
+}

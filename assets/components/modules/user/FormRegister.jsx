@@ -84,7 +84,7 @@ const FormRegister = () => {
   
     return (
      <div className="card card-register">
-        <h1 className="title-register">Inscription</h1>
+        <h1 className="text-center">Inscription</h1>
         <div className={`alert ${message.bgColor} ${message.class}`} role="alert">
             {message.text}
         </div>
@@ -100,9 +100,12 @@ const FormRegister = () => {
             <input type="email" name="email" className='form-control'  value={email}  onChange={e => setEmail(e.target.value)} placeholder="Email"  />
             <input type="password" name="password" className='form-control'  value={password}  onChange={e => setPassword(e.target.value)} placeholder="Mot de passe"/>
             <input type="password" name="confirmPassword" className='form-control' value={confirmPassword}  onChange={e => setConfirmPassword(e.target.value)}  placeholder="Confirmer votre mot de passe" />
-            <input type="submit" value="Envoyer" className="btn btn-danger btn-send" />
+           <div className="d-flex justify-content-center mt-4">
+                <input type="submit" value="Envoyer" className="btn custom-primary-btn" />
+           </div>
+           
         </form>
-        <p className="btn-connexion"> Vous avez déja un compte ? <a href="#/auth">connectez-vous</a></p>
+        <p className="link-registration"> Vous avez déja un compte ? <a href="#/auth">Connectez-vous</a></p>
     </div>
     );
 }

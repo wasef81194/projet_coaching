@@ -4,9 +4,9 @@ import NavBar from './modules/layout/NavBar';
 
 const LoginPage = (props)=>{ 
     return (
-        <div>
+        <div className="login-page">
             <NavBar name="navbar-home"></NavBar>
-            <FormLogin></FormLogin>
+            <FormLogin className="d-flex jusitfy-center align-center h-75"></FormLogin>
         </div>
     )
 }

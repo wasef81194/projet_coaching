@@ -1,5 +1,6 @@
 import React from 'react';
 import { API_URL } from '../../../config';
+import '../../../styles/light/register.scss';
 
 const FormLogin = () => {
     const [email, setEmail] = React.useState("");
@@ -67,17 +68,19 @@ const FormLogin = () => {
     }
   
     return (
-     <div className="card card-register">
-        <h1 className="title-register">Connexion</h1>
+     <div className="card card-register mt-4 p-5">
+        <h1 className="text-center">Connexion</h1>
         <div className={`alert ${message.bgColor} ${message.class}`} role="alert">
             {message.text}
         </div>
         <form onSubmit={handleSubmit}>
-           <input type="email" name="email" className='form-control'  value={email}  onChange={e => setEmail(e.target.value)} placeholder="Email"  />
-            <input type="password" name="password" className='form-control'  value={password}  onChange={e => setPassword(e.target.value)} placeholder="Mot de passe"/>
-            <input type="submit" value="Envoyer" className="btn btn-danger btn-send" />
+           <input type="email" name="email" className="form-control"  value={email}  onChange={e => setEmail(e.target.value)} placeholder="Email"  />
+            <input type="password" name="password" className="form-control"  value={password}  onChange={e => setPassword(e.target.value)} placeholder="Mot de passe"/>
+            <div className="d-flex justify-content-center mt-4">
+                <input type="submit" value="Envoyer" className="btn custom-primary-btn" />
+            </div>
         </form>
-        <p className="btn-connexion"> Vous avez déja un compte ? <a href="#/register">inscrivez-vous</a></p>
+        <p className="link-registration"> Vous avez déja un compte ? <a href="#/register">Inscrivez-vous</a></p>
     </div>
     );
 }

@@ -1,0 +1,32 @@
+@import '../root.scss';
+
+.light{
+    .card-register{
+        width: 60vw;
+        // padding: 50px;
+        margin: auto;
+        // margin-top: 100px;
+        background-color: $bg-color;
+        .form-control{
+            margin-top: 15px;
+            background-color: $light-bg;
+            color: $secondary-color;
+            border: thin solid $grey-light;
+            height: 50px;
+        }
+        input:focus
+        {
+            border-color: none;
+            box-shadow: none;
+        }
+        input::placeholder {
+            color: $secondary-color;
+        }
+        
+        .link-registration{
+            text-align: center;
+            margin-top: 25px;
+            color: $secondary-color;
+        }
+    }
+}
