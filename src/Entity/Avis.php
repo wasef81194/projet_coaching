@@ -6,9 +6,10 @@ use ApiPlatform\Metadata\ApiResource;
 use App\Repository\AvisRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: AvisRepository::class)]
-#[ApiResource]
+#[ApiResource()]
 class Avis
 {
     #[ORM\Id]
@@ -24,6 +25,7 @@ class Avis
 
     #[ORM\ManyToOne(inversedBy: 'avis')]
     #[ORM\JoinColumn(nullable: false)]
+
     private ?User $user = null;
 
     #[ORM\ManyToOne(inversedBy: 'avis')]
@@ -40,6 +42,10 @@ class Avis
 
     #[ORM\Column(nullable: true)]
     private ?int $deleted_by = null;
+
+    #[ORM\ManyToOne]
+    
+    private ?User $coach = null;
 
     public function getId(): ?int
     {
@@ -138,6 +144,18 @@ class Avis
     public function setDeletedBy(?int $deleted_by): self
     {
         $this->deleted_by = $deleted_by;
+
+        return $this;
+    }
+
+    public function getCoach(): ?User
+    {
+        return $this->coach;
+    }
+
+    public function setCoach(?User $coach): static
+    {
+        $this->coach = $coach;
 
         return $this;
     }

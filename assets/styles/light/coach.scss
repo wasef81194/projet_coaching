@@ -9,7 +9,7 @@
             z-index: 2;
             position: relative;
         }
-        .avis{
+        .avis-note{
             width: fit-content;
             padding: 10px 0 0 50px;
             color: #fff;
@@ -143,5 +143,20 @@
       }
     }
   }  
+}
+
+.avis{
+  padding-bottom: 50px;
+  .container-avis{
+    .avis-card{
+      background: white;
+      border: 1px solid #f0f0f0;
+      padding: 20px;
+      border-radius: 6px;
+      i{
+        color: #fdd663;
+      }
+    }
+  }
 }
 }

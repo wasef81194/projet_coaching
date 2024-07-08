@@ -131,7 +131,6 @@ const Reservations = (params) => {
                             <p>Le : {dayjs(reservation.commence).format('DD/MM/YYYY') } de {dayjs(reservation.commence).format('hh:mm') } à {dayjs(reservation.fin).format('hh:mm') }</p>
                             <button onClick={() => confirme(reservation.id, key)} className="btn btn-sm btn-success mr-1"><i className="bi bi-check-circle-fill"></i> Confirmer </button>
                             <button onClick={() => decline(reservation.id, key)} className="btn  btn-sm btn-danger mr-1"><i className="bi bi-x-circle-fill"></i> Décliner </button>
-                            <a href="#" className="btn  btn-sm btn-secondary mr-1"> <i className="bi bi-person-fill"></i> Voir profil </a>
                         </div>
                     </div>
                 ))
@@ -149,7 +148,6 @@ const Reservations = (params) => {
                         <div className="card-body">
                             <p>{reservation.user.firstname} {reservation.user.lastname}</p>
                             <p>Le : {dayjs(reservation.commence).format('DD/MM/YYYY') } de {dayjs(reservation.commence).format('hh:mm') } à {dayjs(reservation.fin).format('hh:mm') }</p>
-                            <a href="#" className="btn  btn-sm btn-secondary mr-1"> <i className="bi bi-person-fill"></i> Voir profil </a>
                         </div>
                     </div>
                 ))

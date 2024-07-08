@@ -173,4 +173,15 @@ class ReservationController extends AbstractController
         return new JsonResponse($response, 200, [], true);
     }
 
+
+    #[Route('api/rdv/user/{id}', name: 'app_all_rdvs_user', methods:'GET')]
+    public function rdvUser($id, ReservationRepository $reservationRepository,  SerializerInterface $serializer): JsonResponse
+    {
+        $rdvs = $reservationRepository->findBy(['user' => $id, 'deleted_at' => null], ['commence' => 'ASC']);
+        $response = $serializer->serialize(
+            $rdvs, 'json'
+        );
+        return new JsonResponse($response, 200, [], true);
+    }
+
 }

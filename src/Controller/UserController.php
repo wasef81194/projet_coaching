@@ -358,6 +358,16 @@ class UserController extends AbstractController
                 );
                 return new JsonResponse($message, 404, [], true);
             }
+
+            if (!preg_match("/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()-_=+{};:,<.>]).{8,}$/", $data['password'])) {
+                $message = $serializer->serialize(
+                    [
+                        'code' => 404,
+                        'message' => "Le mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule, un chiffre, un caractère spécial et avoir une longueur d'au moins 8 caractères."
+                    ], 'json'
+                );
+                return new JsonResponse($message, 404, [], true);
+            }
             //Verification du role
             if (empty($data['roles'][0])) {
                 $message = $serializer->serialize(
