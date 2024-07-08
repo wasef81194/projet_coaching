@@ -42,7 +42,10 @@ class AvisController extends AbstractController
             $moyenne += $avi->getNote(); 
         }
         $diviser = count($avis);
-        $moyenne = $moyenne/$diviser;
+        if ($moyenne > 0) {
+            $moyenne = $moyenne/$diviser;
+        }
+        
 
         $response = $serializer->serialize(
             $moyenne, 'json'
