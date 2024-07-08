@@ -24,7 +24,7 @@ class AvisController extends AbstractController
     public function avisCoach($idCoach, UserRepository $userRepository, AvisRepository $avisRepository, SerializerInterface $serializer): JsonResponse
     {
         $coach = $userRepository->findOneCoach($idCoach);
-        $avis = $avisRepository->findBy(['deleted_at' => NULL, 'coach' => $coach]);
+        $avis = $avisRepository->findBy(['deleted_at' => NULL, 'coach' => $coach], ['created_at' => 'DESC']);
         $response = $serializer->serialize(
             $avis, 'json', [ AbstractNormalizer::CIRCULAR_REFERENCE_HANDLER => function ($object) { return null; }]
         );

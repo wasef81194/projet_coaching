@@ -170,9 +170,9 @@ export default function Coach(params){
                 </div>
             }
             
-            <div className="container avis  mt-5  mb-4">
+            <div className="container avis  mt-5 ">
                 <h2>Avis</h2>
-                <a href={`#/new/avis/coach/${id}`} className="btn btn-warning mb-5"> <i className="bi bi-star-half"></i> Laisser un avis</a>
+                <a href={`#/new/avis/coach/${id}`} className="btn btn-warning mb-1"> <i className="bi bi-star-half"></i> Laisser un avis</a>
                 {avis != '' &&
                     <div className="container-avis">
                         {avis != '' &&
