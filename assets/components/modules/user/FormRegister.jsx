@@ -83,7 +83,7 @@ const FormRegister = () => {
     }
   
     return (
-     <div className="card card-register">
+     <div className="card card-register card-auth">
         <h1 className="title-register">Inscription</h1>
         <div className={`alert ${message.bgColor} ${message.class}`} role="alert">
             {message.text}
